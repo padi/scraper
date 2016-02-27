@@ -45,4 +45,8 @@ group :development do
   gem 'spring'
 end
 
+# Bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+# Simple Form
+gem 'simple_form'
