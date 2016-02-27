@@ -52,5 +52,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'simple_form'
 
 # Devise
-
 gem 'devise'
+
+gem 'validate_url'
