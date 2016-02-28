@@ -23,7 +23,7 @@
       <tr>
         <td><%= movie.title %></td>
         <td><%= movie.hotness %></td>
-        <td><%= movie.image_url %></td>
+        <td><%= image_tag movie.image_url, class: "thumbnail" %></td>
         <td><%= movie.synopsis %></td>
         <td><%= movie.rating %></td>
         <td><%= movie.genre %></td>
