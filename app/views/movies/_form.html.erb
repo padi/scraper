@@ -1,6 +1,9 @@
 <%= simple_form_for(@movie) do |f| %>
   <%= f.error_notification %>
 
+  <% if @failure %>
+    <%= @failure %>
+  <% end %>
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :hotness %>

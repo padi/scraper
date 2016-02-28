@@ -3,9 +3,9 @@ require 'open-uri'
 class Scrape
   attr_accessor :title, :hotness, :image_url, :rating, :director, :genre, :release_date, :runtime, :synopsis, :failure
 
-  def scrape_new_movie
+  def scrape_new_movie(url)
     begin
-      doc =  Nokogiri::HTML(open("http://www.rottentomatoes.com/m/the_martian/"))
+      doc =  Nokogiri::HTML(open(url))
       doc.css('script').remove
 
       self.title = doc.at("//h1[@itemprop='name']").text
@@ -14,6 +14,8 @@ class Scrape
       self.rating = doc.at("//td[@itemprop='contentRating']").text
       self.director = doc.at("//span[@itemprop='name']").text
       self.genre = doc.at("//span[@itemprop='genre']").text
+      # TODO find updated release date
+      # self.release_date = doc.at("//td[@itemprop = 'datePublished']").text.to_date
       self.runtime = doc.at("//time[@itemprop='duration']").text
       s = doc.at("#movieSynopsis").text
       if ! s.valid_encoding?
@@ -25,18 +27,4 @@ class Scrape
     end
   end
 
-  def save_movie
-    movie = Movie.new(
-      title: self.title,
-      hotness: self.hotness,
-      image_url: self.image_url,
-      rating: self.rating,
-      director: self.director,
-      genre: self.genre,
-      release_date: self.release_date,
-      runtime: self.runtime,
-      synopsis: self.synopsis,
-    )
-    movie.save
-  end
 end
