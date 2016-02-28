@@ -37,7 +37,6 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'pry-rails'
-  gem 'pry-nav'
   gem 'pry-byebug'
 end
 
